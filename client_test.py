@@ -33,7 +33,15 @@ class ClientTest(unittest.TestCase):
     for p in prices:
       self.assertEqual(getRatio(p['price_a'], p['price_b']), p['price_a'] / p['price_b'])
 
-
+  def test_getRatio_divideByZero(self):
+    prices = [
+      {
+        'price_a': 119.2,
+        'price_b': 0,
+      }
+    ]
+    for p in prices:
+      self.assertEqual(getRatio(p['price_a'], p['price_b']), None)
 
 if __name__ == '__main__':
     unittest.main()
